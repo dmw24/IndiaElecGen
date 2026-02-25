@@ -1,0 +1,82 @@
+{
+  "generated_at_utc": "2026-02-25T17:35:11.243870+00:00",
+  "input_file": "/Users/daanwalter/Library/CloudStorage/OneDrive-SharedLibraries-Ember/ember-futures - Documents/03 Research/2026/97 Ideas/India grid optimization/Input file.xlsx",
+  "hours": 8784,
+  "scenarios": [
+    {
+      "id": "nf70",
+      "label": ">=70% non-fossil",
+      "threshold_non_fossil_share": 0.7,
+      "enforced_min_non_fossil_share": 0.7,
+      "min_non_fossil_share": 0.7,
+      "achieved_fossil_share_served_primary": 0.29999999942757494,
+      "achieved_non_fossil_share_served_primary": 0.7000000005724251,
+      "achieved_solar_share_served": 0.7427435182571849,
+      "achieved_non_fossil_share": 0.7000000005724251,
+      "status": "Optimal",
+      "lcoe_usd_per_mwh_served": 56.23374490549592,
+      "objective_usd": 93723321494.03903,
+      "output_dir": "/Users/daanwalter/Library/CloudStorage/OneDrive-SharedLibraries-Ember/ember-futures - Documents/03 Research/2026/97 Ideas/India grid optimization/outputs/scenarios/nf70"
+    },
+    {
+      "id": "nf80",
+      "label": ">=80% non-fossil",
+      "threshold_non_fossil_share": 0.8,
+      "enforced_min_non_fossil_share": 0.8,
+      "min_non_fossil_share": 0.8,
+      "achieved_fossil_share_served_primary": 0.19999999989797104,
+      "achieved_non_fossil_share_served_primary": 0.800000000102029,
+      "achieved_solar_share_served": 0.8548765919977244,
+      "achieved_non_fossil_share": 0.800000000102029,
+      "status": "Optimal",
+      "lcoe_usd_per_mwh_served": 57.07559667781986,
+      "objective_usd": 95126413968.85893,
+      "output_dir": "/Users/daanwalter/Library/CloudStorage/OneDrive-SharedLibraries-Ember/ember-futures - Documents/03 Research/2026/97 Ideas/India grid optimization/outputs/scenarios/nf80"
+    },
+    {
+      "id": "nf90",
+      "label": ">=90% non-fossil",
+      "threshold_non_fossil_share": 0.9,
+      "enforced_min_non_fossil_share": 0.9,
+      "min_non_fossil_share": 0.9,
+      "achieved_fossil_share_served_primary": 0.0999999994315925,
+      "achieved_non_fossil_share_served_primary": 0.9000000005684075,
+      "achieved_solar_share_served": 0.9661469784115253,
+      "achieved_non_fossil_share": 0.9000000005684075,
+      "status": "Optimal",
+      "lcoe_usd_per_mwh_served": 58.21394426617778,
+      "objective_usd": 97023668316.31404,
+      "output_dir": "/Users/daanwalter/Library/CloudStorage/OneDrive-SharedLibraries-Ember/ember-futures - Documents/03 Research/2026/97 Ideas/India grid optimization/outputs/scenarios/nf90"
+    },
+    {
+      "id": "nf95",
+      "label": ">=95% non-fossil",
+      "threshold_non_fossil_share": 0.95,
+      "enforced_min_non_fossil_share": 0.95,
+      "min_non_fossil_share": 0.95,
+      "achieved_fossil_share_served_primary": 0.050000000163937276,
+      "achieved_non_fossil_share_served_primary": 0.9499999998360628,
+      "achieved_solar_share_served": 1.0204408500937325,
+      "achieved_non_fossil_share": 0.9499999998360628,
+      "status": "Optimal",
+      "lcoe_usd_per_mwh_served": 60.61542441880419,
+      "objective_usd": 101026152888.24518,
+      "output_dir": "/Users/daanwalter/Library/CloudStorage/OneDrive-SharedLibraries-Ember/ember-futures - Documents/03 Research/2026/97 Ideas/India grid optimization/outputs/scenarios/nf95"
+    },
+    {
+      "id": "nf99",
+      "label": ">=99% non-fossil",
+      "threshold_non_fossil_share": 0.99,
+      "enforced_min_non_fossil_share": 0.99,
+      "min_non_fossil_share": 0.99,
+      "achieved_fossil_share_served_primary": 0.009999999912160388,
+      "achieved_non_fossil_share_served_primary": 0.9900000000878396,
+      "achieved_solar_share_served": 1.0631798869923315,
+      "achieved_non_fossil_share": 0.9900000000878396,
+      "status": "Optimal",
+      "lcoe_usd_per_mwh_served": 70.59404357835906,
+      "objective_usd": 117657258163.72072,
+      "output_dir": "/Users/daanwalter/Library/CloudStorage/OneDrive-SharedLibraries-Ember/ember-futures - Documents/03 Research/2026/97 Ideas/India grid optimization/outputs/scenarios/nf99"
+    }
+  ]
+}

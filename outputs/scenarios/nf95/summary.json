@@ -1,0 +1,111 @@
+{
+  "scenario_name": "nf95",
+  "status": "Optimal",
+  "objective_usd": 101026152888.24518,
+  "lcoe_usd_per_mwh_served": 60.61542441880419,
+  "total_demand_mwh": 1666674016.67,
+  "served_energy_mwh": 1666674016.67,
+  "unserved_energy_mwh": 0.0,
+  "min_non_fossil_share_target": 0.95,
+  "achieved_fossil_share_served_primary": 0.050000000163937276,
+  "achieved_non_fossil_share_served_primary": 0.9499999998360628,
+  "achieved_solar_share_served": 1.0204408500937325,
+  "achieved_non_fossil_share": 0.9499999998360628,
+  "share_metric_definition": "Primary generation share on served demand: fossil=(diesel+ccgt+coal)/served_demand, non_fossil=1-fossil. Battery discharge is excluded from share denominator.",
+  "capacity_mw": {
+    "solar": 1085566.6,
+    "battery": 645531.61,
+    "diesel": 21106.728,
+    "ccgt": 78453.075,
+    "coal": 0.0
+  },
+  "annual_generation_mwh": {
+    "solar": 1700742250.3998706,
+    "diesel": 821484.9550000001,
+    "ccgt": 82512216.15173,
+    "coal": 0.0,
+    "battery_charge": 903091801.29687,
+    "battery_discharge": 785689868.9823129
+  },
+  "cost_components_by_technology": {
+    "solar": {
+      "capex_annualized_usd": 49366933834.359955,
+      "fixed_om_usd": 5427833000.0,
+      "var_om_usd": 0.0,
+      "total_usd": 54794766834.359955
+    },
+    "battery": {
+      "capex_annualized_usd": 31559433764.95901,
+      "fixed_om_usd": 1721417626.6666665,
+      "var_om_usd": 0.0,
+      "total_usd": 33280851391.62568
+    },
+    "diesel": {
+      "capex_annualized_usd": 644930060.3488319,
+      "fixed_om_usd": 422134560.0,
+      "var_om_usd": 217693513.07500002,
+      "total_usd": 1284758133.423832
+    },
+    "ccgt": {
+      "capex_annualized_usd": 4878149705.512423,
+      "fixed_om_usd": 1176796125.0,
+      "var_om_usd": 5610830698.31764,
+      "total_usd": 11665776528.830063
+    },
+    "coal": {
+      "capex_annualized_usd": 0.0,
+      "fixed_om_usd": 0.0,
+      "var_om_usd": 0.0,
+      "total_usd": 0.0
+    }
+  },
+  "cost_component_totals": {
+    "capex_annualized_usd": 86449447365.18022,
+    "fixed_om_usd": 8748181311.666666,
+    "var_om_usd": 5828524211.39264,
+    "unserved_penalty_usd": 0.0
+  },
+  "fixed_cost_usd": {
+    "solar": 54794766834.359955,
+    "battery": 33280851391.62568,
+    "diesel": 1067064620.3488319,
+    "ccgt": 6054945830.512423,
+    "coal": 0.0
+  },
+  "variable_cost_usd": {
+    "solar": 0.0,
+    "diesel": 217693513.07500002,
+    "ccgt": 5610830698.31764,
+    "coal": 0.0
+  },
+  "unserved_penalty_usd": 0.0,
+  "total_fixed_cost_usd": 95197628676.8469,
+  "total_variable_cost_usd": 5828524211.39264,
+  "voll_usd_per_mwh": 10000.0,
+  "wacc_fraction": 0.08,
+  "project_life_years": null,
+  "technology_lifetimes_years": {
+    "solar": 35.0,
+    "battery": 20.0,
+    "diesel": 20.0,
+    "ccgt": 30.0,
+    "coal": 40.0
+  },
+  "capacity_factor_constraints_applied": false,
+  "battery": {
+    "duration_hours": 4.0,
+    "round_trip_efficiency": 0.87,
+    "charge_efficiency": 0.9327379053088815,
+    "discharge_efficiency": 0.9327379053088815
+  },
+  "ramp_rate_per_min_fraction_of_capacity": {
+    "solar": 1.0,
+    "battery": 1.0,
+    "diesel": 0.4,
+    "ccgt": 0.05,
+    "coal": 0.02
+  },
+  "hours_modeled": 8784,
+  "timestamp_start": "2024-01-01T00:00:00",
+  "timestamp_end": "2024-12-31T23:00:00"
+}

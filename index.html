@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>India Grid LP Optimizer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./frontend/static/styles.css" />
+    <script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+  </head>
+  <body>
+    <div class="bg-orb bg-orb-a"></div>
+    <div class="bg-orb bg-orb-b"></div>
+
+    <main class="app-shell">
+      <header class="hero card reveal-up">
+        <div>
+          <p class="kicker">India Grid Optimization</p>
+          <h1>Full-Year LP Dispatch and Capacity Expansion</h1>
+          <p class="subtitle">
+            8,784-hour optimization with hourly ramp constraints for solar, battery, diesel, CCGT, and coal.
+          </p>
+        </div>
+        <div class="meta" id="metaBlock"></div>
+      </header>
+
+      <section class="tab-strip card reveal-up" role="tablist" aria-label="Dashboard Views">
+        <button
+          type="button"
+          class="tab-btn is-active"
+          data-tab="deep-dive"
+          aria-selected="true"
+        >
+          Scenario Deep Dive
+        </button>
+        <button type="button" class="tab-btn" data-tab="comparison" aria-selected="false">
+          Scenario Comparison
+        </button>
+      </section>
+
+      <section id="deepDivePanel" class="tab-panel is-active">
+        <section class="kpi-grid" id="kpiGrid"></section>
+
+        <section class="controls card reveal-up">
+          <div class="control-item">
+            <label for="scenarioSelect">Scenario</label>
+            <select id="scenarioSelect"></select>
+          </div>
+
+          <div class="control-item">
+            <label for="windowSize">Window Size</label>
+            <select id="windowSize">
+              <option value="24">24h</option>
+              <option value="72">72h</option>
+              <option value="168" selected>168h (Week)</option>
+              <option value="720">720h (Month-ish)</option>
+              <option value="8784">Full Year (daily)</option>
+            </select>
+          </div>
+
+          <div class="control-item stretch">
+            <label for="startHour">Start Hour <span id="startHourLabel">0</span></label>
+            <input type="range" id="startHour" min="0" max="0" value="0" />
+          </div>
+        </section>
+
+        <section class="chart-grid">
+          <article class="card reveal-up">
+            <h2>Dispatch Stack</h2>
+            <div id="dispatchChart" class="chart"></div>
+          </article>
+
+          <article class="card reveal-up">
+            <h2>Battery State and Net Output</h2>
+            <div id="batteryChart" class="chart"></div>
+          </article>
+
+          <article class="card reveal-up">
+            <h2>Installed Capacity (MW)</h2>
+            <div id="capacityChart" class="chart"></div>
+          </article>
+
+          <article class="card reveal-up">
+            <h2>Annual Primary Generation Mix</h2>
+            <div id="generationMixChart" class="chart"></div>
+          </article>
+
+          <article class="card reveal-up full-width">
+            <h2>Cost Waterfall (Tech x Component)</h2>
+            <div class="chart-toolbar">
+              <label for="costUnitMode">View</label>
+              <select id="costUnitMode">
+                <option value="total" selected>Total Cost (USD)</option>
+                <option value="per_mwh">Cost per MWh (USD/MWh)</option>
+              </select>
+            </div>
+            <div id="costChart" class="chart"></div>
+          </article>
+        </section>
+
+        <section class="card reveal-up assumptions-card">
+          <h2 id="assumptionsTitle">All Assumptions Used</h2>
+          <p id="assumptionsInline" class="assumptions-inline"></p>
+        </section>
+      </section>
+
+      <section id="comparisonPanel" class="tab-panel">
+        <article class="card comparison-card">
+          <h2>Scenario Comparison (Yearly)</h2>
+          <p id="comparisonMeta" class="comparison-meta"></p>
+          <div class="comparison-scroll">
+            <table class="comparison-table">
+              <thead>
+                <tr>
+                  <th>Scenario</th>
+                  <th>Status</th>
+                  <th class="num">Objective (USD)</th>
+                  <th class="num">LCOE (USD/MWh)</th>
+                  <th class="num">Demand (MWh)</th>
+                  <th class="num">Served (MWh)</th>
+                  <th class="num">Unserved (MWh)</th>
+                  <th class="num">NF Target (%)</th>
+                  <th class="num">NF Achieved (%)</th>
+                  <th class="num">Fossil Share (%)</th>
+                  <th class="num">Solar MW</th>
+                  <th class="num">Battery MW</th>
+                  <th class="num">Diesel MW</th>
+                  <th class="num">CCGT MW</th>
+                  <th class="num">Coal MW</th>
+                  <th class="num">Solar Gen (MWh)</th>
+                  <th class="num">Diesel Gen (MWh)</th>
+                  <th class="num">CCGT Gen (MWh)</th>
+                  <th class="num">Coal Gen (MWh)</th>
+                </tr>
+              </thead>
+              <tbody id="comparisonTableBody"></tbody>
+            </table>
+          </div>
+        </article>
+      </section>
+    </main>
+
+    <script src="./frontend/static/app.js"></script>
+  </body>
+</html>

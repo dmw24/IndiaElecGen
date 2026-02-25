@@ -1,0 +1,44 @@
+assumption,value
+Battery capex,120.0
+Battery degradation,0.02
+Battery fixed O&M,0.6666666666666666
+Battery lifetime,20.0
+Battery min stable load,0.0
+Battery ramp rate,1.0
+Battery round-trip efficiency,0.87
+CCGT capex,700.0
+CCGT cold start time,240.0
+CCGT fixed O&M,15.0
+CCGT hot start time,60.0
+CCGT lifetime,30.0
+CCGT min stable load,0.4
+CCGT min up/down time,4.0
+CCGT ramp rate,0.05
+CCGT variable O&M (fuel),65.0
+CCGT variable O&M (other),3.0
+Coal capex,1200.0
+Coal cold start time,360.0
+Coal fixed O&M,40.0
+Coal hot start time,120.0
+Coal lifetime,40.0
+Coal min stable load,0.55
+Coal min up/down time,8.0
+Coal ramp rate,0.02
+Coal variable O&M (fuel),40.0
+Coal variable O&M (other),5.0
+Diesel capex,300.0
+Diesel fixed O&M,20.0
+Diesel lifetime,20.0
+Diesel min stable load,0.3
+Diesel ramp rate,0.4
+Diesel start time,5.0
+Diesel variable O&M (fuel),250.0
+Diesel variable O&M (other),15.0
+Discount rate (WACC),0.08
+ILR (DC:AC ratio),1.2
+Solar degradation,0.005
+Solar fixed O&M,5.0
+Solar lifetime,35.0
+Solar PV capex,530.0
+Solar PV min stable load,0.0
+Solar PV ramp rate,1.0

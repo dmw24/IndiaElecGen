@@ -1,0 +1,17 @@
+bucket,technology,component,cost_usd
+fixed,solar,capex_annualized,67949304024.43736
+fixed,solar,fixed_om,7470941500.0
+variable,solar,var_om,0.0
+fixed,battery,capex_annualized,33938851126.55566
+fixed,battery,fixed_om,1851203573.3333333
+variable,battery,var_om,0.0
+fixed,diesel,capex_annualized,1197478894.1424558
+fixed,diesel,fixed_om,783801620.0
+variable,diesel,var_om,400309349.56149995
+fixed,ccgt,capex_annualized,2444938134.006893
+fixed,ccgt,fixed_om,589812510.0
+variable,ccgt,var_om,1030617431.6816001
+fixed,coal,capex_annualized,0.0
+fixed,coal,fixed_om,0.0
+variable,coal,var_om,0.0
+penalty,system,unserved_penalty,0.0
