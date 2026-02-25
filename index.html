@@ -114,33 +114,31 @@
         <article class="card comparison-card">
           <h2>Scenario Comparison (Yearly)</h2>
           <p id="comparisonMeta" class="comparison-meta"></p>
-          <div class="comparison-scroll">
-            <table class="comparison-table">
-              <thead>
-                <tr>
-                  <th>Scenario</th>
-                  <th>Status</th>
-                  <th class="num">Objective (USD)</th>
-                  <th class="num">LCOE (USD/MWh)</th>
-                  <th class="num">Demand (MWh)</th>
-                  <th class="num">Served (MWh)</th>
-                  <th class="num">Unserved (MWh)</th>
-                  <th class="num">NF Target (%)</th>
-                  <th class="num">NF Achieved (%)</th>
-                  <th class="num">Fossil Share (%)</th>
-                  <th class="num">Solar MW</th>
-                  <th class="num">Battery MW</th>
-                  <th class="num">Diesel MW</th>
-                  <th class="num">CCGT MW</th>
-                  <th class="num">Coal MW</th>
-                  <th class="num">Solar Gen (MWh)</th>
-                  <th class="num">Diesel Gen (MWh)</th>
-                  <th class="num">CCGT Gen (MWh)</th>
-                  <th class="num">Coal Gen (MWh)</th>
-                </tr>
-              </thead>
-              <tbody id="comparisonTableBody"></tbody>
-            </table>
+          <div class="comparison-chart-grid">
+            <article class="comparison-chart-card">
+              <h3>System Cost Split by Tech (USD)</h3>
+              <div id="comparisonCostSplitChart" class="comparison-chart"></div>
+            </article>
+            <article class="comparison-chart-card">
+              <h3>LCOE Split by Tech (USD/MWh served)</h3>
+              <div id="comparisonLcoeSplitChart" class="comparison-chart"></div>
+            </article>
+            <article class="comparison-chart-card full-width">
+              <h3>Non-Fossil Target vs Achieved</h3>
+              <div id="comparisonShareChart" class="comparison-chart"></div>
+            </article>
+            <article class="comparison-chart-card">
+              <h3>Installed Capacity by Tech (MW)</h3>
+              <div id="comparisonCapacityChart" class="comparison-chart"></div>
+            </article>
+            <article class="comparison-chart-card">
+              <h3>Annual Primary Generation by Tech (MWh)</h3>
+              <div id="comparisonGenerationChart" class="comparison-chart"></div>
+            </article>
+            <article class="comparison-chart-card full-width">
+              <h3>Served vs Unserved Energy (MWh)</h3>
+              <div id="comparisonReliabilityChart" class="comparison-chart"></div>
+            </article>
           </div>
         </article>
       </section>
