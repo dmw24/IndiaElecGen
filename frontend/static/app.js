@@ -628,21 +628,21 @@ function renderAssumptions() {
 }
 
 function renderComparison() {
-  const objectiveEl = document.getElementById("comparisonObjectiveChart");
-  const lcoeEl = document.getElementById("comparisonLcoeChart");
+  const costSplitEl = document.getElementById("comparisonCostSplitChart");
+  const lcoeSplitEl = document.getElementById("comparisonLcoeSplitChart");
   const shareEl = document.getElementById("comparisonShareChart");
   const capacityEl = document.getElementById("comparisonCapacityChart");
   const generationEl = document.getElementById("comparisonGenerationChart");
   const reliabilityEl = document.getElementById("comparisonReliabilityChart");
   const meta = document.getElementById("comparisonMeta");
-  if (!objectiveEl || !lcoeEl || !shareEl || !capacityEl || !generationEl || !reliabilityEl) {
+  if (!costSplitEl || !lcoeSplitEl || !shareEl || !capacityEl || !generationEl || !reliabilityEl) {
     return;
   }
 
   if (!comparisonSummaries.length) {
     for (const id of [
-      "comparisonObjectiveChart",
-      "comparisonLcoeChart",
+      "comparisonCostSplitChart",
+      "comparisonLcoeSplitChart",
       "comparisonShareChart",
       "comparisonCapacityChart",
       "comparisonGenerationChart",
@@ -673,34 +673,6 @@ function renderComparison() {
     layout.yaxis = { ...layout.yaxis, title: yTitle };
     return { ...layout, ...options };
   };
-
-  const objectiveTrace = {
-    type: "bar",
-    x: labels,
-    y: rows.map((row) => asNumber(row.objective_usd)),
-    marker: { color: "#6dbfff" },
-    hovertemplate: "%{x}<br>%{y:$,.0f}<extra></extra>",
-  };
-  Plotly.newPlot(
-    objectiveEl,
-    [objectiveTrace],
-    comparisonLayout("USD"),
-    plotConfig()
-  );
-
-  const lcoeTrace = {
-    type: "bar",
-    x: labels,
-    y: rows.map((row) => asNumber(row.lcoe_usd_per_mwh_served)),
-    marker: { color: "#f2a13b" },
-    hovertemplate: "%{x}<br>%{y:.3f} USD/MWh<extra></extra>",
-  };
-  Plotly.newPlot(
-    lcoeEl,
-    [lcoeTrace],
-    comparisonLayout("USD/MWh"),
-    plotConfig()
-  );
 
   const targetTrace = {
     type: "bar",
@@ -741,6 +713,44 @@ function renderComparison() {
     ccgt: "CCGT",
     coal: "Coal",
   };
+
+  const techCostForRow = (row, tech) =>
+    asNumber((row.fixed_cost_usd || {})[tech]) + asNumber((row.variable_cost_usd || {})[tech]);
+  const servedMwhForRow = (row) => asNumber(row.served_energy_mwh);
+
+  const systemCostSplitTraces = techOrder.map((tech) => ({
+    type: "bar",
+    name: techLabels[tech],
+    x: labels,
+    y: rows.map((row) => techCostForRow(row, tech)),
+    marker: { color: TECH_COST_COLORS[tech] || "#5ec2ff" },
+    hovertemplate: `%{x}<br>${techLabels[tech]} cost: %{y:$,.0f}<extra></extra>`,
+  }));
+  Plotly.newPlot(
+    costSplitEl,
+    systemCostSplitTraces,
+    comparisonLayout("USD", { barmode: "stack" }),
+    plotConfig()
+  );
+
+  const lcoeSplitTraces = techOrder.map((tech) => ({
+    type: "bar",
+    name: techLabels[tech],
+    x: labels,
+    y: rows.map((row) => {
+      const served = servedMwhForRow(row);
+      return served > 0 ? techCostForRow(row, tech) / served : 0;
+    }),
+    marker: { color: TECH_COST_COLORS[tech] || "#5ec2ff" },
+    hovertemplate: `%{x}<br>${techLabels[tech]} LCOE: %{y:.3f} USD/MWh<extra></extra>`,
+  }));
+  Plotly.newPlot(
+    lcoeSplitEl,
+    lcoeSplitTraces,
+    comparisonLayout("USD/MWh served", { barmode: "stack" }),
+    plotConfig()
+  );
+
   const capacityTraces = techOrder.map((tech) => ({
     type: "bar",
     name: techLabels[tech],
@@ -797,10 +807,12 @@ function renderComparison() {
   if (meta) {
     const loaded = rows.length;
     const total = scenarios.length;
+    const hasPenalty = rows.some((row) => asNumber(row.unserved_penalty_usd) > 0);
+    const penaltyNote = hasPenalty ? " Tech split excludes unserved-penalty cost." : "";
     if (comparisonLoadFailures > 0 || loaded !== total) {
-      meta.textContent = `Loaded ${loaded} of ${total} scenarios.`;
+      meta.textContent = `Loaded ${loaded} of ${total} scenarios.${penaltyNote}`;
     } else {
-      meta.textContent = `Loaded ${loaded} scenarios.`;
+      meta.textContent = `Loaded ${loaded} scenarios.${penaltyNote}`;
     }
   }
 }
@@ -817,8 +829,8 @@ function resizeDeepDiveCharts() {
 
 function resizeComparisonCharts() {
   const ids = [
-    "comparisonObjectiveChart",
-    "comparisonLcoeChart",
+    "comparisonCostSplitChart",
+    "comparisonLcoeSplitChart",
     "comparisonShareChart",
     "comparisonCapacityChart",
     "comparisonGenerationChart",
